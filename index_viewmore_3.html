@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homagama Maha Vidyalaya</title>
+    <!-- Favicon -->
+    <link rel="icon" href="assets/favi.jpeg" type="image/x-icon">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+
+
+
+
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            padding-top: 70px;
+        }
+
+        /* Navbar Styling */
+        .navbar {
+            background: linear-gradient(to right, #330033, #feb47b);
+
+        }
+
+        .navbar-brand img {
+            height: 50px;
+            width: auto;
+            border-radius: 10px;
+            border: 3px solid #050000;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .navbar-brand img:hover {
+            transform: scale(1.1);
+        }
+
+        .nav-link {
+            color: black;
+            font-weight: bold;
+        }
+
+        .navbar-brand {
+            color: #FFD700;
+            font-size: 40px;
+            font-family: serif;
+        }
+
+
+        .dropdown-menu {
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: all 0.3s ease-in-out;
+        }
+
+        .nav-item:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        /* Optional: Customize the dropdown background and items */
+        .dropdown-menu {
+            background-color: #f0eecd;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .dropdown-item:hover {
+            background-color: #e9ecef;
+            color: #0056b3;
+            transition: background-color 0.2s ease-in-out;
+        }
+
+
+        .navbar-nav .nav-item {
+            /* margin-left: 20px; */
+            /* Add space between items */
+        }
+
+        .faq-container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .faq-question {
+            cursor: pointer;
+            padding: 10px;
+            background-color: #f1f1f1;
+            margin: 0;
+            border: 1px solid #ddd;
+            position: relative;
+        }
+
+        .faq-answer {
+            display: none;
+            padding: 10px;
+            border-top: 1px solid #ddd;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .faq-question::after {
+            content: '+';
+            position: absolute;
+            right: 20px;
+            font-weight: bold;
+        }
+
+        .faq-question.active::after {
+            content: '-';
+        }
+
+
+
+        .content-section {
+            padding: 40px 20px;
+        }
+
+        .card {
+            border: none;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+        }
+
+        .card img {
+            height: 250px;
+            object-fit: cover;
+        }
+
+        .card-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .card-text {
+            font-size: 1rem;
+            color: #555;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 30px;
+            color: #330033;
+        }
+
+        /* Footer */
+        .footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 40px 20px;
+            margin-top: 20px;
+        }
+
+        .footer a {
+            color: #feb47b;
+            text-decoration: none;
+            margin: 0 10px;
+            font-weight: bold;
+        }
+
+        .footer a:hover {
+            color: #ff7e5f;
+        }
+
+        .middle-section {
+            padding: 50px 0;
+        }
+
+        .middle-section img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+
+        .details-menu {
+            padding: 30px;
+            background-color: #f8f9fa;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .details-menu h4 {
+            margin-bottom: 20px;
+        }
+
+        .equal-height {
+            display: flex;
+            align-items: stretch;
+        }
+
+        /* Style for Scroll to Top Button */
+        #scrollToTopBtn {
+            position: fixed;
+            bottom: 20px;
+            /* Distance from bottom of the page */
+            right: 20px;
+            /* Distance from right side of the page */
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            padding: 15px;
+            font-size: 18px;
+            cursor: pointer;
+            display: none;
+            /* Hidden by default */
+            z-index: 1000;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        #scrollToTopBtn:hover {
+            background-color: #0056b3;
+        }
+
+
+
+
+        /* Media Queries for Responsiveness */
+        /* @media (max-width: 768px) {
+            .hero-section h1 {
+                font-size: 36px;
+            }
+
+            .cta-btn {
+                font-size: 16px;
+                padding: 12px 25px;
+            }
+
+            .services-section h2 {
+                font-size: 30px;
+            }
+        } */
+
+        /* nav bar name */
+        .navbar-name {
+            font-size: 40px;
+            font-weight: bold;
+            font-family: 'Times New Roman', Times, serif;
+
+        }
+
+        .navbar-name a {
+            text-decoration: none;
+            color: #FFD700;
+        }
+
+
+        /* Media Queries for Responsiveness */
+        @media (max-width: 768px) {
+            .hero-section h1 {
+                font-size: 36px;
+            }
+
+            .cta-btn {
+                font-size: 16px;
+                padding: 12px 25px;
+            }
+
+            .services-section h2 {
+                font-size: 30px;
+            }
+        }
+
+        @media(max-width : 1400px){
+            .navbar-name{
+                font-size: 30px;
+            }
+        }
+        @media(max-width : 1200px){
+            .navbar-name{
+                font-size: 25px;
+            }
+            
+        }
+        @media(max-width : 900px){
+            .navbar-name{
+                font-size: 30px;
+            }
+        }
+        @media(max-width : 515px){
+            .navbar-name{
+                display: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <img src="assets/favi.jpeg" alt="Logo" style="height: 40px; margin-right: 10px;">
+            </a>
+
+
+            <span class="navbar-name"><a href="index.html">Homagama Maha Vidyalaya</a></span>
+
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto" style="margin-right: -100px;">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">
+                            <i class="bi bi-house-fill"></i> Home
+                        </a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="visakhaDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-info-circle"></i>
+                            Homagama M.V.
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="visakhaDropdown">
+                            <li><a class="dropdown-item" href="school_profile.html">School Profile</a></li>
+                            <li><a class="dropdown-item" href="principal's_message.html">Principal's message</a></li>
+                            <li><a class="dropdown-item" href="history.html">History</a></li>
+                            <li><a class="dropdown-item" href="infrastructure.html">Infrastructure</a></li>
+                            <li><a class="dropdown-item" href="management.html">Management</a></li>
+                            <li><a class="dropdown-item" href="admission_criteria.html">Admission Criteria</a></li>
+                            <li><a class="dropdown-item" href="events.html">Events</a></li>
+                        </ul>
+
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="visakhaDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-journal-bookmark-fill"></i>
+                            Curricular
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="Curricular">
+                            <li><a class="dropdown-item" href="current_curricular.html">Current Curricular</a></li>
+                            <li><a class="dropdown-item" href="highlight_achievements.html">Highlights &
+                                    Achievements</a></li>
+                        </ul>
+
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="visakhaDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-people-fill"></i>
+                            Extra-Curricular
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="visakhaDropdown">
+                            <li><a class="dropdown-item" href="sport.html">Sports</a></li>
+                            <li><a class="dropdown-item" href="clubs_society.html">Clubs & Societies</a></li>
+                            <li><a class="dropdown-item" href="highlight_achievements_extra.html">Highlights &
+                                    Achievements</a></li>
+                        </ul>
+
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="visakhaDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-list-ul"></i>
+                            OGA
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="visakhaDropdown">
+                            <li><a class="dropdown-item" href="#">Committee</a></li>
+                            <li><a class="dropdown-item" href="#">Projects</a></li>
+                            <li><a class="dropdown-item" href="#">Events</a></li>
+                            <li><a class="dropdown-item" href="#">OGA Branches</a></li>
+                            <li><a class="dropdown-item" href="#">Newsletter</a></li>
+                            <li><a class="dropdown-item" href="#">Membership</a></li>
+                            <li><a class="dropdown-item" href="#">Web History</a></li>
+
+                        </ul>
+
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">
+                            <i class="bi bi-person-circle"></i> Contact
+                        </a>
+                    </li>
+                    <!-- Add other dropdowns and nav items as required -->
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header Section -->
+    <header class="py-5 text-white text-center" style="background-color: #330033;">
+        <div class="container">
+            <h1 class="display-4">Annual Report 2023</h1>
+            <p class="lead">We provide world-class facilities to support your learning journey.</p>
+        </div>
+    </header>
+
+
+
+
+
+    <section class="middle-section container">
+        <div class="row equal-height align-items-center">
+            <div class="col-md-6 mb-4 mb-md-0">
+                <img src="assets/i2.jpeg" alt="Details" class="img-fluid rounded">
+            </div>
+            <div class="col-md-6">
+                <div class="details-menu">
+                    <h4 style="text-align: center; color: #330033; font-weight: bold;">Annual Report 2023</h4>
+                    <ul class="list-unstyled">
+                        <li class="mb-3">
+                            <strong>Admissions:</strong> G.C.E. (A/L) 2024/2026 admissions are open now. Explore our
+                            courses.
+                        </li>
+                        <li class="mb-3">
+                            <strong>Events:</strong> Join our Annual General Meeting to connect with peers and faculty.
+                        </li>
+                        <li class="mb-3">
+                            <strong>Facilities:</strong> Experience our state-of-the-art classrooms and laboratories.
+                        </li>
+                        <li>
+                            <strong>Reports:</strong> Access detailed insights in our Annual Report 2023.
+                        </li>
+                    </ul>
+                    <!-- <a href="#" class="btn btn-primary">Explore More</a> -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="faq-section container my-5">
+        <div class="faq-container">
+            <h2 style="text-align: center; color: #330033; font-weight: bold;">Frequently Asked Questions</h2>
+            <div class="faq">
+                <h3 class="faq-question">Question 1: What is your return policy?</h3>
+                <div class="faq-answer">
+                    <p>We offer a 30-day return policy on all items. Items must be returned in their original condition.
+                    </p>
+                </div>
+            </div>
+            <div class="faq">
+                <h3 class="faq-question">Question 2: How long does shipping take?</h3>
+                <div class="faq-answer">
+                    <p>Shipping typically takes 5-7 business days. International shipping may vary.</p>
+                </div>
+            </div>
+            <div class="faq">
+                <h3 class="faq-question">Question 3: Do you offer customer support?</h3>
+                <div class="faq-answer">
+                    <p>Yes, we offer 24/7 customer support through our online chat and email.</p>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+
+
+    <!-- Footer Section -->
+    <footer class="footer bg-dark text-white py-4">
+        <div class="container text-center">
+            <p>&copy;2025 Homagama Maha Vidyalaya, Homagama, Sri Lanka. All Rights Reserved.</p>
+            <div class="mt-3">
+                <a href="https://www.facebook.com/vishakacollege" target="_blank" class="text-white me-2">
+                    <i class="bi bi-facebook"></i>
+                </a>
+                <a href="https://twitter.com/vishakacollege" target="_blank" class="text-white me-2">
+                    <i class="bi bi-twitter"></i>
+                </a>
+                <a href="https://www.instagram.com/vishakacollege" target="_blank" class="text-white">
+                    <i class="bi bi-instagram"></i>
+                </a>
+            </div>
+            <p>Latest Updated : December 01, 2025</p>
+        </div>
+    </footer>
+
+
+
+
+
+
+    <!-- Scroll to Top Button -->
+    <button id="scrollToTopBtn" title="Go to top">↑</button>
+    <script>
+        // Get the button
+        let scrollToTopBtn = document.getElementById("scrollToTopBtn");
+
+        // When the user scrolls down 20px from the top of the document, show the button
+        window.onscroll = function () {
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                scrollToTopBtn.style.display = "block";
+            } else {
+                scrollToTopBtn.style.display = "none";
+            }
+        };
+
+        // When the user clicks the button, scroll to the top of the document
+        scrollToTopBtn.onclick = function () {
+            document.body.scrollTop = 0; // For Safari
+            document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE, and Opera
+        }
+    </script>
+
+    <script> document.querySelectorAll('.faq-question').forEach((question) => { question.addEventListener('click', () => { question.classList.toggle('active'); const answer = question.nextElementSibling; if (answer.style.display === 'block') { answer.style.display = 'none'; } else { answer.style.display = 'block'; } }); }); </script>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+
+
+
+
+
+</body>
+
+</html>
